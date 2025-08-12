@@ -1,3 +1,8 @@
+# MongoDB
+```bash
+docker-compose up -d
+```
+
 # Backend
 ```bash
 cd backend
