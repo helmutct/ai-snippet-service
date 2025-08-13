@@ -6,12 +6,15 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import { connectDB } from './config/database';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+connectDB();
+
 import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import snippetsRouter from './routes/snippets';
 
 const app = express();
 
@@ -26,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/snippets', snippetsRouter);
 
 console.log("Application started at", process.env.NODE_ENV);
 
